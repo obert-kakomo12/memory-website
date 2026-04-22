@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In Loving Memory | Passmore Hunduza nee Mapa</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbarNav">
+
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div id="loading-text">Passmore Hunduza nee Mapa</div>
+    </div>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero container-fluid reveal">
+        <div class="container text-center">
+            <p class="hero-sub">Celebrating the Life of</p>
+            <h1 id="hero-typewriter" class="hero-title"></h1>
+            <div class="mt-5 mb-5 d-flex justify-content-center">
+                <img src="WhatsApp Image 2026-04-22 at 22.41.27.jpeg" alt="Passmore Hunduza nee Mapa" class="img-fluid profile-img">
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-8">
+                    <p class="lead text-muted serif italic px-md-5">
+                        "We gather once more, not just in sorrow, but to complete our final duties and honor the path laid before us. 
+                        This site is dedicated to the 'Kusuka Foshoro' ceremony—a time to wash away the heaviness of the past months 
+                        and celebrate a legacy that remains forever in our hearts."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <!-- Life Summary & Legacy -->
+        <section id="life-story" class="container-fluid reveal">
+            <div class="container">
+                <h2 class="section-title text-center">Life & Legacy</h2>
+                <div class="row g-5 mt-4">
+                    <div class="col-lg-7">
+                        <h3 class="serif mb-4">A Beautiful Journey</h3>
+                        <p class="text-muted mb-4">
+                            Born in Mafararikwa, Gogo P was one of a pillar. From a young age, she showed a tireless spirit, always working to support, care and provide.
+                        </p>
+                        <p class="text-muted mb-4">
+                            Her life was a testament to the Shona proverb, 'Kugona nhaka huchenjera' that is to leave a legacy is to be wise. Whether in her professional life or her role as a Mother, Grandmother, Sister, Aunt and Relative to many she used her tools to build a foundation of love and unity that we honor today.
+                        </p>
+                        <div class="bg-white p-4 border-start border-olive my-5 shadow-sm">
+                            <p class="serif italic mb-0">
+                                "Her work is finished, her tools are clean, and her soul is at rest."
+                                <br><small class="text-uppercase letter-spacing-1">Passmore Hunduza nee Mapa</small>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Milestones Sidebar -->
+                    <div class="col-lg-5">
+                        <div class="venue-card shadow-sm h-100">
+                            <h4 class="serif mb-4">Milestones</h4>
+                            <div class="mb-4">
+                                <h6 class="text-uppercase letter-spacing-1">1962 — The Beginning</h6>
+                                <p class="small opacity-75">Born in Mafararikwa, the start of a remarkable story.</p>
+                            </div>
+                            <div class="mb-4">
+                                <h6 class="text-uppercase letter-spacing-1">Pillar of the Family</h6>
+                                <p class="small opacity-75">Building a foundation of love, unity, and strength.</p>
+                            </div>
+                            <div class="mb-4">
+                                <h6 class="text-uppercase letter-spacing-1">2025 — Eternal Memory</h6>
+                                <p class="small opacity-75">Passing into grace, leaving behind a legacy of love.</p>
+                            </div>
+                            <div class="mt-5">
+                                <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=600" alt="Legacy" class="img-fluid rounded-0 shadow">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tribute Board -->
+        <section id="tributes" class="container-fluid reveal">
+            <div class="container">
+                <h2 class="section-title text-center">Tributes & Memories</h2>
+                
+                <div class="row justify-content-center mb-5">
+                    <div class="col-lg-10">
+                        <div id="tribute-list" class="tribute-timeline">
+                            <div class="tribute-item tribute-left">
+                                <div class="tribute-card">
+                                    <p class="tribute-text">"She touched so many lives as a mother, Gogo, aunt, and friend. Please share a memory or a message of comfort as we celebrate her life and legacy."</p>
+                                    <p class="small text-uppercase letter-spacing-1 mt-3">Memorial Team</p>
+                                </div>
+                            </div>
+                            <div class="tribute-item tribute-right">
+                                <div class="tribute-card">
+                                    <p class="tribute-text">"Gogo Passmore taught us the value of hard work and kindness. We will miss her stories and her laughter, but we carry her legacy with us every day."</p>
+                                    <p class="small text-uppercase letter-spacing-1 mt-3">Family Tribute</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button id="viewMoreTributes" class="btn btn-sign-in" style="display: none;">View More Tributes</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center mt-5">
+                    <div class="col-lg-6">
+                        <div class="p-5 border bg-white shadow-sm">
+                            <h4 class="serif mb-4 text-center">Leave a Tribute</h4>
+                            <form id="tributeForm">
+                                <div class="mb-3">
+                                    <label class="form-label">Your Name</label>
+                                    <input type="text" id="tributeName" class="form-control" placeholder="Douglas" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Your Message</label>
+                                    <textarea id="tributeMessage" class="form-control" rows="4" placeholder="Share a memory..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary-custom w-100">Post Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Info -->
+        <section id="service" class="container-fluid reveal text-center">
+            <div class="container">
+                <h2 class="section-title">Masuka Foshoro Ceremony</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <div class="bg-white p-5 border shadow-sm">
+                            <h4 class="serif mb-4">We request you for a ceremony of thanksgiving (Masuka Foshoro)</h4>
+                            <div class="mb-4">
+                                <p class="text-uppercase letter-spacing-1 small mb-1">Date & Time</p>
+                                <p class="lead">Sunday, May 04, 2026 — 10:00 AM</p>
+                            </div>
+                            <div class="mb-4">
+                                <p class="text-uppercase letter-spacing-1 small mb-1">Location</p>
+                                <p class="lead">Nemamwa Curios After Ancient City<br>Kyle Dam Road, Masvingo</p>
+                            </div>
+                            <div class="mt-4 border p-2">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15024.49506649856!2d30.9317578!3d-20.270923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x192d77647898f0e5%3A0xc3f73319047242!2sAncient%20City%20 Lodge!5e0!3m2!1sen!2szw!4v1713824000000!5m2!1sen!2szw" 
+                                    width="100%" 
+                                    height="450" 
+                                    style="border:0; filter: grayscale(20%) sepia(5%);" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center mt-5">
+        <div class="container">
+            <p>&copy; 2026 In Loving Memory of Passmore Hunduza nee Mapa. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Background Audio -->
+    <audio id="bgAudio" loop>
+        <source src="WhatsApp Audio 2026-04-22 at 14.52.35.mpeg" type="audio/mpeg">
+    </audio>
+
+    <!-- Audio Control Toggle -->
+    <button id="audioToggle" class="audio-btn" title="Toggle Music">
+        <span id="audioIcon">♪</span>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
