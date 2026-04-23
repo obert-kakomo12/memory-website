@@ -103,22 +103,87 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // 4. Tribute Logic
+    // 4. Tribute Logic (with Supabase Persistence)
     const tributeForm = document.getElementById('tributeForm');
     const tributeList = document.getElementById('tribute-list');
     const viewMoreBtn = document.getElementById('viewMoreTributes');
 
+    // Supabase Configuration - PLEASE REPLACE THESE WITH YOUR OWN KEYS
+    const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+    const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+    
+    let supabaseClient = null;
+    if (typeof supabase !== 'undefined' && SUPABASE_URL !== 'YOUR_SUPABASE_URL') {
+        supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    }
+
+    async function loadTributes() {
+        if (!supabaseClient) {
+            console.warn("Supabase not initialized. Tributes will not be persistent.");
+            return;
+        }
+
+        const { data, error } = await supabaseClient
+            .from('tributes')
+            .select('*')
+            .order('created_at', { ascending: false });
+
+        if (error) {
+            console.error('Error fetching tributes:', error);
+            return;
+        }
+
+        if (data) {
+            tributeList.innerHTML = ''; // Clear existing
+            data.forEach((tribute, index) => {
+                const tributeItem = createTributeElement(tribute.name, tribute.message, index);
+                tributeList.appendChild(tributeItem);
+            });
+            rebalanceTributes();
+        }
+    }
+
+    function createTributeElement(name, message, index) {
+        const item = document.createElement('div');
+        item.className = `tribute-item reveal active ${index % 2 === 0 ? 'tribute-left' : 'tribute-right'}`;
+        item.innerHTML = `<div class="tribute-card"><p class="tribute-text">"${message}"</p><p class="small text-uppercase letter-spacing-1 mt-3">${name}</p></div>`;
+        return item;
+    }
+
     if (tributeForm) {
-        tributeForm.addEventListener('submit', (e) => {
+        tributeForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const name = document.getElementById('tributeName').value;
             const message = document.getElementById('tributeMessage').value;
-            const newTributeItem = document.createElement('div');
-            newTributeItem.className = 'tribute-item reveal active';
-            // Ensure no dash in new tributes
-            newTributeItem.innerHTML = `<div class="tribute-card"><p class="tribute-text">"${message}"</p><p class="small text-uppercase letter-spacing-1 mt-3">${name}</p></div>`;
-            tributeList.insertBefore(newTributeItem, tributeList.firstChild);
-            rebalanceTributes();
+            const submitBtn = tributeForm.querySelector('button');
+
+            if (supabaseClient) {
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Posting...';
+
+                const { error } = await supabaseClient
+                    .from('tributes')
+                    .insert([{ name, message }]);
+
+                if (error) {
+                    alert('Error posting tribute. Please try again.');
+                    console.error(error);
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = 'Post Message';
+                    return;
+                }
+                
+                // Reload tributes to show the new one
+                await loadTributes();
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Post Message';
+            } else {
+                // Fallback for local-only if Supabase is not configured
+                const newTributeItem = createTributeElement(name, message, 0);
+                tributeList.insertBefore(newTributeItem, tributeList.firstChild);
+                rebalanceTributes();
+            }
+            
             tributeForm.reset();
         });
     }
@@ -146,5 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
             viewMoreBtn.style.display = 'none';
         });
     }
-    rebalanceTributes();
+
+    // Initial Load
+    loadTributes();
 });
